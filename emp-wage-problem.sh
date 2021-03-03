@@ -1,15 +1,22 @@
 #!/bin/bash -x
 echo "Welcome To Employee Wage Problems"
 
-Present=1;
-randomCheck=$((RANDOM%2));
+#!/bin/bash -x
 
-if [ $Present -eq $randomCheck ]
-then 
-         empRatePerHr=20;
-         empHrs=8;
-         salary=$(( $empHrs*$empRatePerHr )) 
-   else
-      salary=0;
+isPartTime=1;
+isFullTime=2;
+empRatePerHr=20;
+randomCheck=$((RANDOM%3))
+
+if [ $isFullTime -eq $randomCheck ]
+then
+        empHrs=8;
+elif [ $isPartTime -eq $randomCheck ]
+then
+        empHrs=4;
+else
+        empHrs=0;
 fi
-echo "Daily Wage of an Employee= " $salary
+salary=$(($empHrs*$empRatePerHr));
+
+echo "Salary Of Employee= "$salary
